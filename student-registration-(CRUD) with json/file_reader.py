@@ -1,29 +1,38 @@
 import os
 import json
-path=os.getcwd()
 
-filename=r"student\student.json"
-filename=os.path.join(path,filename)
+path = os.getcwd()
+
+
+folder = os.path.join(path, "student")
+filename = os.path.join(folder, "student.json")
+
+if not os.path.exists(folder):
+    
+    os.makedirs(folder)
+
 
 def load_json():
 
-    
-    
+
     if os.path.exists(filename):
-        with open(filename,'r') as file:
-           content=file.read()
-           if content:
-              existing_data= json.loads(content)
-           else:
-              existing_data= []
+        
+        with open(filename, 'r') as file:
+            
+            content = file.read()
+
+            if content.strip(): 
+                     
+                return json.loads(content)
+            else:
+                return []         
 
     else:
-       existing_data= []
+        return []                   
 
-    return existing_data
- 
- 
+
 def write_file(existing_data):
-   
-   with open(filename,'w') as file:
-      json.dump(existing_data,file,indent=4)
+    
+
+    with open(filename, 'w') as file:
+        json.dump(existing_data, file, indent=4)
