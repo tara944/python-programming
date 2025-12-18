@@ -1,15 +1,17 @@
 from student_package.register import students
 
 def delete_student():
-    sid = int(input("Enter ID to delete: "))
-    found = False
-
+    choice= int(input("enter student id to delete"))
+    found=False
+    
     for st in students:
-        if st["id"] == sid:
+        if st["id"]==choice:
+            
             students.remove(st)
-            print("\nStudent Deleted Successfully!")
-            found = True
+            print("student deleted ")
+            found=True
             break
-
+        
     if not found:
-        print("Student Not Found")
+        print("student not found")
+    
